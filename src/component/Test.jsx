@@ -1,21 +1,22 @@
 import Logo from 'assets/logo.svg'
-import React, { useState } from 'react'
-
+import React, { useEffect, useState } from 'react'
+import {UseDebounce} from '../utils/utils'
 console.log(process.env);
 export default function Test(props) {
-  const [user,setUser] = useState(['1','2'])
-  const change = () => {
-    setUser(['3',...user])
-  }
+  const [value,setValue] = useState('1')
 
+  const change = (e)  => {
+    setValue(e.target.value)
+  }
+  const dbValue = UseDebounce(value,1000)
+  useEffect(() => {
+    console.log(dbValue);
+  },[dbValue])
   return (
     <>
-      <p>test</p>
-      <img src={Logo} alt=""  onClick={change} style={{width: '100px'}}/>
-      {user.map((item,index) => (<React.Fragment key={item}>
-        <p>{item}</p>
-        <input type="text"/>
-      </React.Fragment>))}
+      <p>test{value}</p>
+      <img src={Logo} alt=""   style={{width: '100px'}}/>
+        <input type="text"  onChange={change} value={value}/>
     </>
   )
 }

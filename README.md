@@ -16,3 +16,7 @@
    在.env 文件中配置 build 时的变量
    在.env.development 文件中配置 npm start 时的变量
    如果取值为 undefined 有可能是因为变量没以 VUE_APP 或 REACT_APP 开头
+4. 学习 ts
+   tsconfig 配置了 inclue 会自动查找当前目录下的 d.ts 文件  
+   interface type 都是全局的在 src 下的文件都能使用 避免变量环境污染 用 namespace
+   declare let jQuery: (selector: string) => any; 这种属于第三方声明文件 要上传到@types 在本地些没有用 不需要使用 var let const class
